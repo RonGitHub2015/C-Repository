@@ -15,7 +15,7 @@ namespace ConsoleSQLServerCS
 
         static void Main(string[] args)
         {
-
+ 
             string stringConnectionString = "Data Source=SQL-ead.dev.london.edu;Initial Catalog=TempWork;User ID=rfrancis;Password=(ex1to1)";
             //string stringConnectionString = "Data Source=PC-Ron\\SQLSERVERRON;Initial Catalog=TempWork;Integrated Security=True";
 
