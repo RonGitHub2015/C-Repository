@@ -12,7 +12,9 @@ namespace DictionaryUsage
 {
     public partial class Form2 : Form
     {
-
+        /// <summary>
+        /// Initial comit
+        /// </summary>
         // Create a global storage location.
         // The <String, String> part part of the variable declaration defines the datatypes used by the 
         // key and value.
