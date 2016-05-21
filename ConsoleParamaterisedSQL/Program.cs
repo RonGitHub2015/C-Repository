@@ -12,7 +12,7 @@ namespace ConsoleParamaterisedSQL
     class Program
     {
         /// <summary>
-        /// Initial Version - second comit aaaa sdasdasd
+        /// Initial Version
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
