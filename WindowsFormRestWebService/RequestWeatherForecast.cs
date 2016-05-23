@@ -13,7 +13,9 @@ namespace WindowsFormRestWebService
 
     class RequestWeatherForecast
     {
-        public static async Task<List<Current_Observation>> GetConditions(string strLocation)
+        //public static async Task<List<Current_Observation>> GetConditions(string strLocation)
+        public static async Task<string> GetConditions(string strLocation)
+
         {
             string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/conditions/q/";
             string strAPILocation = strLocation;             //UK / London.json
@@ -25,10 +27,11 @@ namespace WindowsFormRestWebService
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    var rootResult = JsonConvert.DeserializeObject<Rootobject>(result);
+                    //var rootResult = JsonConvert.DeserializeObject<Rootobject>(result);
                     //return rootResult.current_observation;
-                    string strWeather = rootResult.current_observation.weather;
-                    return null;
+                    //string strWeather = rootResult.current_observation.weather;
+                    //return null;
+                    return result;
                 }
                 else
                 {
@@ -40,7 +43,9 @@ namespace WindowsFormRestWebService
 
         //----------------------------------------------------------------------------------------------//
 
-        public static async Task<List<Forecast>> GetForecast(string strLocation)
+        //public static async Task<List<Forecast>> GetForecast(string strLocation)
+        public static async Task<string> GetForecast(string strLocation)
+
         {
             string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/";
             string strAPILocation = strLocation;             //UK / London.json
@@ -52,10 +57,10 @@ namespace WindowsFormRestWebService
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    var rootResult = JsonConvert.DeserializeObject<Rootobject>(result);
-                    //return rootResult.current_observation;
-                    string strForecastDate = rootResult.forecast.txt_forecast.date;
-                    return null;
+                    //var rootResult = JsonConvert.DeserializeObject<Rootobject>(result);
+                    //string strForecastDate = rootResult.forecast.txt_forecast.forecastday.ToString();
+                    //return null;
+                    return result;
                 }
                 else
                 {
