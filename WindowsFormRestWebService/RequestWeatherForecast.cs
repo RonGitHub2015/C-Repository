@@ -43,8 +43,8 @@ namespace WindowsFormRestWebService
 
         //----------------------------------------------------------------------------------------------//
 
-        //public static async Task<List<Forecast>> GetForecast(string strLocation)
         public static async Task<string> GetForecast(string strLocation)
+        //public static async Task<IEnumerable<Forecast>> GetForecast(string strLocation)
 
         {
             string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/";
@@ -69,6 +69,47 @@ namespace WindowsFormRestWebService
             }
 
         }
+            public static async Task<IEnumerable<Forecast>> GetForecast1(string strLocation)
+
+        {
+                string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/";
+                string strAPILocation = strLocation;             //UK / London.json
+
+                using (var client = new HttpClient())
+                {
+                    string repUrl = strAPIUrl + strAPILocation + ".json";
+                    HttpResponseMessage response = await client.GetAsync(repUrl);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string result = await response.Content.ReadAsStringAsync();
+                    //var rootResult = JsonConvert.DeserializeObject<Rootobject>(result);
+                    //string strForecastDate = rootResult.forecast.txt_forecast.forecastday.ToString();
+                    //return null;
+
+                    // Obtain all the forecasts.
+                    //Forecast = GetData.Element("forecast").Element("txt_forecast").Elements("forecastday");
+
+                    // Define the maximum number of forecasts.
+                    //MaxForecasts = Forecast.Count() - 1;
+
+                    // Specify which forecast to use.
+                    //ForecastNumber = 0;
+
+                    // Specify which icon to use.
+                    //IconNumber = 0;
+
+                    return null;
+
+
+                }
+                    else
+                    {
+                        return null;
+                    }
+                }
+
+
+            }
 
 
         //---------------------------------------------------------------------------------------------//
