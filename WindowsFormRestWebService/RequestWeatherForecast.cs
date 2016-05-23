@@ -79,26 +79,26 @@ namespace WindowsFormRestWebService
                 {
                     string repUrl = strAPIUrl + strAPILocation + ".json";
                     HttpResponseMessage response = await client.GetAsync(repUrl);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string result = await response.Content.ReadAsStringAsync();
-                    //var rootResult = JsonConvert.DeserializeObject<Rootobject>(result);
-                    //string strForecastDate = rootResult.forecast.txt_forecast.forecastday.ToString();
-                    //return null;
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    var rootResult = JsonConvert.DeserializeObject<Rootobject>(result);
+                    var Forecast = rootResult.forecast.txt_forecast.forecastday;
+                    
 
                     // Obtain all the forecasts.
                     //Forecast = GetData.Element("forecast").Element("txt_forecast").Elements("forecastday");
 
                     // Define the maximum number of forecasts.
-                    //MaxForecasts = Forecast.Count() - 1;
+                    Int32 MaxForecasts = Forecast.Count() - 1;
 
                     // Specify which forecast to use.
-                    //ForecastNumber = 0;
+                    Int32 ForecastNumber = 0;
 
                     // Specify which icon to use.
                     //IconNumber = 0;
 
-                    return null;
+                    //return null;
 
 
                 }
