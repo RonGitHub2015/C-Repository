@@ -69,7 +69,7 @@
     <Compile Include="Form1UsingJSON.Designer.cs">
       <DependentUpon>Form1UsingJSON.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\WundergroundConditions.cs" />
+    <Compile Include="Models\WundergroundAPIClasses.cs" />
     <Compile Include="RequestWeatherForecast.cs" />
     <Compile Include="zForm1UsingJSON.cs">
       <SubType>Form</SubType>

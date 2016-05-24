@@ -10,6 +10,7 @@ namespace WindowsFormRestWebService.Models
     public class Rootobject
     {
         public Response response { get; set; }
+        public Location location { get; set; }
         public Current_Observation current_observation { get; set; }
         public Forecast forecast { get; set; }
     }
@@ -23,7 +24,69 @@ namespace WindowsFormRestWebService.Models
 
     public class Features
     {
+        public int geolookup { get; set; }
         public int conditions { get; set; }
+        public int forecast { get; set; }
+    }
+
+    public class Location
+    {
+        public string type { get; set; }
+        public string country { get; set; }
+        public string country_iso3166 { get; set; }
+        public string country_name { get; set; }
+        public string state { get; set; }
+        public string city { get; set; }
+        public string tz_short { get; set; }
+        public string tz_long { get; set; }
+        public string lat { get; set; }
+        public string lon { get; set; }
+        public string zip { get; set; }
+        public string magic { get; set; }
+        public string wmo { get; set; }
+        public string l { get; set; }
+        public string requesturl { get; set; }
+        public string wuiurl { get; set; }
+        public Nearby_Weather_Stations nearby_weather_stations { get; set; }
+    }
+
+    public class Nearby_Weather_Stations
+    {
+        public Airport airport { get; set; }
+        public Pws pws { get; set; }
+    }
+
+    public class Airport
+    {
+        public Station[] station { get; set; }
+    }
+
+    public class Station
+    {
+        public string city { get; set; }
+        public string state { get; set; }
+        public string country { get; set; }
+        public string icao { get; set; }
+        public string lat { get; set; }
+        public string lon { get; set; }
+    }
+
+    public class Pws
+    {
+        public Station1[] station { get; set; }
+    }
+
+    public class Station1
+    {
+        public string neighborhood { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string country { get; set; }
+        public string id { get; set; }
+        public float lat { get; set; }
+        public float lon { get; set; }
+        public int distance_km { get; set; }
+        public int distance_mi { get; set; }
     }
 
     public class Current_Observation
@@ -60,8 +123,8 @@ namespace WindowsFormRestWebService.Models
         public int dewpoint_f { get; set; }
         public int dewpoint_c { get; set; }
         public string heat_index_string { get; set; }
-        public string heat_index_f { get; set; }
-        public string heat_index_c { get; set; }
+        public int heat_index_f { get; set; }
+        public int heat_index_c { get; set; }
         public string windchill_string { get; set; }
         public string windchill_f { get; set; }
         public string windchill_c { get; set; }
@@ -123,9 +186,9 @@ namespace WindowsFormRestWebService.Models
 
     public class Estimated
     {
+        public int estimated { get; set; }
+        public string description { get; set; }
     }
-
-    //----------------------------------------------------------------------//
 
     public class Forecast
     {
@@ -220,8 +283,8 @@ namespace WindowsFormRestWebService.Models
 
     public class Qpf_Day
     {
-        public float _in { get; set; }
-        public int mm { get; set; }
+        public float? _in { get; set; }
+        public int? mm { get; set; }
     }
 
     public class Qpf_Night
@@ -238,8 +301,8 @@ namespace WindowsFormRestWebService.Models
 
     public class Snow_Day
     {
-        public float _in { get; set; }
-        public float cm { get; set; }
+        public float? _in { get; set; }
+        public float? cm { get; set; }
     }
 
     public class Snow_Night
@@ -263,7 +326,6 @@ namespace WindowsFormRestWebService.Models
         public string dir { get; set; }
         public int degrees { get; set; }
     }
-    //----------------------------------------------------------------------//
 
 
 }

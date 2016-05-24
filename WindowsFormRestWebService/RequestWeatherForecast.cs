@@ -98,7 +98,7 @@ namespace WindowsFormRestWebService
                     // Specify which icon to use.
                     //IconNumber = 0;
 
-                    //return null;
+                    return null;
 
 
                 }

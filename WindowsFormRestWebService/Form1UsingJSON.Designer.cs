@@ -118,6 +118,7 @@
             this.IconSelect.Name = "IconSelect";
             this.IconSelect.Size = new System.Drawing.Size(44, 20);
             this.IconSelect.TabIndex = 16;
+            this.IconSelect.ValueChanged += new System.EventHandler(this.IconSelect_ValueChanged);
             // 
             // btnPrevious
             // 

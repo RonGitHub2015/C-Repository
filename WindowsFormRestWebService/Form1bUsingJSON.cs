@@ -55,7 +55,7 @@ namespace WindowsFormRestWebService
             var results2 = await RequestWeatherForecast.GetForecast("UK/London");
             rootResult = JsonConvert.DeserializeObject<Rootobject>(results2);
             string strForecastDate = rootResult.forecast.txt_forecast.date;
-            string arrForecastDay = rootResult.forecast.txt_forecast.forecastday[1].title.ToString();
+            string strForecastDay = rootResult.forecast.txt_forecast.forecastday[1].title.ToString();
 
 
         }
