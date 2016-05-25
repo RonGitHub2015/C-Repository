@@ -17,7 +17,7 @@ using System.Collections;
 
 namespace WindowsFormRestWebService
 {
-    public partial class Form1UsingJSON : Form
+    public partial class Form1cUsingJSON : Form
     {
         // Holds all of the weather data.
         //XDocument GetData;
@@ -39,13 +39,18 @@ namespace WindowsFormRestWebService
 
 
 
-        public Form1UsingJSON()
+        public Form1cUsingJSON()
         {
             InitializeComponent();
 
-            string wuUri = @"http://api.wunderground.com/api/02e5dd8c34e3e657/geolookup/conditions/forecast/q/Dhaka,Bangladesh.json";
+            //// Obtain the forecast.
+            //Task T2 = new Task(ApiCallGetForecast);
+            //T2.Start();
 
-            //string wuUri = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/UK/London.json";
+
+            // sample usage:
+
+            string wuUri = @"http://api.wunderground.com/api/02e5dd8c34e3e657/geolookup/conditions/forecast/q/Dhaka,Bangladesh.json";
 
             GetForecast(wuUri);
 
@@ -81,7 +86,6 @@ namespace WindowsFormRestWebService
             else
             {
                 // there was a problem getting the data
-                MessageBox.Show("There was a problem getting the data");
             }
 
 
@@ -113,10 +117,45 @@ namespace WindowsFormRestWebService
 
         }
 
-       
+        //static async void ApiCallGetForecast()
+        //{
+
+        //    using (var client = new HttpClient())
+        //    {
+        //        HttpResponseMessage response = await client.GetAsync("http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/UK/London.json");
+
+        //        response.EnsureSuccessStatusCode();
+
+        //        using (HttpContent contenet = response.Content)
+        //        {
+        //            string responseBody = await response.Content.ReadAsStringAsync();
+        //            var rootResult = JsonConvert.DeserializeObject<Rootobject>(responseBody);
+        //            var Forecast = rootResult.forecast.txt_forecast.forecastday;
+
+        //            // Obtain all the forecasts.
+        //            //Forecast = GetData.Element("forecast").Element("txt_forecast").Elements("forecastday");
+
+        //            // Define the maximum number of forecasts.
+        //            MaxForecasts = Forecast.Count() - 1;
+
+        //            // Specify which forecast to use.
+        //            ForecastNumber = 0;
+
+        //            // Specify which icon to use.
+        //            IconNumber = 0;
+
+
+        //        }
+
+
+        //    }
+
+        //}
 
         static void GetForecast(string targetURI)
         {
+
+            //string strRequestURL = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/UK/London.json";
 
             // Contains the result of a retry request.
             DialogResult TryAgain = DialogResult.Yes;
@@ -180,6 +219,41 @@ namespace WindowsFormRestWebService
                         MessageBoxIcon.Error);
                 }
             }
+
+
+
+
+
+            //using (var client = new HttpClient())
+            //{
+            //    HttpResponseMessage response = client.GetAsync("http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/UK/London.json");
+
+            //    response.EnsureSuccessStatusCode();
+
+            //    using (HttpContent contenet = response.Content)
+            //    {
+            //        string responseBody = await response.Content.ReadAsStringAsync();
+            //        var rootResult = JsonConvert.DeserializeObject<Rootobject>(responseBody);
+            //        var Forecast = rootResult.forecast.txt_forecast.forecastday;
+
+            //        // Obtain all the forecasts.
+            //        //Forecast = GetData.Element("forecast").Element("txt_forecast").Elements("forecastday");
+
+            //        // Define the maximum number of forecasts.
+            //        MaxForecasts = Forecast.Count() - 1;
+
+            //        // Specify which forecast to use.
+            //        ForecastNumber = 0;
+
+            //        // Specify which icon to use.
+            //        IconNumber = 0;
+
+
+            //    }
+
+
+            //}
+
         }
 
 
@@ -202,7 +276,6 @@ namespace WindowsFormRestWebService
                     // just use: responseData.ToString()
 
                     wUData = JsonConvert.DeserializeObject<Rootobject>(responseData);
-
 
                 }
             }
@@ -234,9 +307,17 @@ namespace WindowsFormRestWebService
             // Display the icon on screen.
             //wbIcon.Url = new Uri(Icons.ElementAt(IconNumber).Element("icon_url").Value);
         }
-
         private void btnNext_Click(object sender, EventArgs e)
         {
+            //            // Get the weather data.
+
+            //Task T1 = new Task(ApiCallGetConditions);
+            //T1.Start();
+
+
+            //"http://api.wunderground.com/api/4d7d78f1c8917220/conditions/q/CA/San_Francisco.json  "
+            //"http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/UK/London.json  "
+
             // Enable the Previous button.
             btnPrevious.Enabled = true;
 

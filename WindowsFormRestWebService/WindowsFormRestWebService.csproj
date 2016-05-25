@@ -63,6 +63,12 @@
     <Compile Include="Form1JavaScript.Designer.cs">
       <DependentUpon>Form1JavaScript.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1cUsingJSON.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1cUsingJSON.Designer.cs">
+      <DependentUpon>Form1cUsingJSON.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1UsingJSON.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1bUsingJSON.resx">
       <DependentUpon>Form1bUsingJSON.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1cUsingJSON.resx">
+      <DependentUpon>Form1cUsingJSON.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1UsingJSON.resx">
       <DependentUpon>Form1UsingJSON.cs</DependentUpon>
