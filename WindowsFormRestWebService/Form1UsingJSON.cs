@@ -23,7 +23,7 @@ namespace WindowsFormRestWebService
         //XDocument GetData;
 
         // Contains just the forecast.
-        //IEnumerable<Forecast> aForecast;
+        IEnumerable<Forecastday> aForecastday;
 
         // Specifies which forecast to use.
         static Int32 ForecastNumber;
@@ -58,30 +58,37 @@ namespace WindowsFormRestWebService
                 string stringForecastTitle = WU_Result.forecast.txt_forecast.forecastday[0].title; 
 
 
-                IEnumerable<Forecastday> aForecast = WU_Result.forecast.txt_forecast.forecastday; //Keyword IEnumerable is required to avoid error message
-                                                                                     // 'Cannot implicitly convert type 'WindowFormRestWebService.
-                                                                                     //  Models.Forecastday[] to System.Collections.Generic.IEnumerable
-                                                                                     //  <WindowFormRestWebService.Models.Forecast>'
+                //IEnumerable<Forecastday> aForecast = WU_Result.forecast.txt_forecast.forecastday; //Keyword IEnumerable is required to avoid error message
+                                                                                                  // 'Cannot implicitly convert type 'WindowFormRestWebService.
+                                                                                                  //  Models.Forecastday[] to System.Collections.Generic.IEnumerable
+                                                                                                  //  <WindowFormRestWebService.Models.Forecast>'
 
-                foreach (var fday in aForecast)
+                aForecastday = WU_Result.forecast.txt_forecast.forecastday;
+
+                foreach (var fday in aForecastday)
                 {
                     string strTitle = fday.title;
                     string strIcon = fday.icon;
 
                 }
 
-                ICollection<Forecast> collectionOfT = aForecast as ICollection<Forecast>;
-                if (collectionOfT != null)
-                    MaxForecasts = collectionOfT.Count;
+                
+                //ICollection<Forecast> collectionOfT = aForecast as ICollection<Forecast>;
+                //if (collectionOfT != null)
+                //    MaxForecasts = collectionOfT.Count;
 
-                ICollection collection = aForecast as ICollection;
+                //ICollection collection = aForecast as ICollection;
+                //if (collection != null)
+                //    MaxForecasts = collection.Count - 1;
+
+                //Both the following methods of counting the number of Forecast days work
+                ICollection<Forecastday> collectionOfT = aForecastday as ICollection<Forecastday>;
+                if (collectionOfT != null)
+                    MaxForecasts = collectionOfT.Count - 1;
+
+                ICollection collection = aForecastday as ICollection;
                 if (collection != null)
                     MaxForecasts = collection.Count - 1;
-
-                foreach (var item in collection)
-                {
-                    string strTitle = item.ToString();
-                }
 
 
 
@@ -166,7 +173,6 @@ namespace WindowsFormRestWebService
                               response.StatusDescription));
                         }
 
-
                         using (Stream stream = response.GetResponseStream())
                         {
                             StreamReader reader = new StreamReader(stream);
@@ -245,9 +251,21 @@ namespace WindowsFormRestWebService
 
         public void DisplayData(Int32 FNumber)
         {
+
+            foreach (var fday in aForecastday)
+            {
+                string strTitle = fday.title;
+                string strIcon = fday.icon;
+            }
+
+            var dataRow = (from aforecastday in aForecastday.AsEnumerable()
+                           select aforecastday.title).First();
+
             // Display the title of the current forecast.
             //txtTitle.Text = Forecast.ElementAt(FNumber).Element("title").Value;
             //txtTitle.Text = aForecast.ElementAt(FNumber).txt_forecast.forecastday[FNumber].ToString();
+            txtTitle.Text = (from aforecastday in aForecastday.AsEnumerable()
+                               select aforecastday.title).First();
 
             //txtTitle.Text = Forecast.ElementAt(FNumber).txt_forecast.forecastday[FNumber].title;
 
