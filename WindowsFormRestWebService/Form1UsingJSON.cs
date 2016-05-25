@@ -258,14 +258,14 @@ namespace WindowsFormRestWebService
                 string strIcon = fday.icon;
             }
 
-            var dataRow = (from aforecastday in aForecastday.AsEnumerable()
-                           select aforecastday.title).First();
+
 
             // Display the title of the current forecast.
             //txtTitle.Text = Forecast.ElementAt(FNumber).Element("title").Value;
             //txtTitle.Text = aForecast.ElementAt(FNumber).txt_forecast.forecastday[FNumber].ToString();
             txtTitle.Text = (from aforecastday in aForecastday.AsEnumerable()
-                               select aforecastday.title).First();
+                             where aforecastday.period == FNumber
+                             select aforecastday.title).First();
 
             //txtTitle.Text = Forecast.ElementAt(FNumber).txt_forecast.forecastday[FNumber].title;
 
