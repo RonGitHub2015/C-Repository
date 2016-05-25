@@ -53,7 +53,11 @@ namespace WindowsFormRestWebService
 
             if (WU_Result != null)
             {
-               IEnumerable aForecast = WU_Result.forecast.txt_forecast.forecastday; //Keyword IEnumerable is required to avoid error message
+
+                string strWeather = WU_Result.current_observation.weather;
+                string stringForecastTitle = WU_Result.forecast.txt_forecast.forecastday[0].title; 
+
+                IEnumerable aForecast = WU_Result.forecast.txt_forecast.forecastday; //Keyword IEnumerable is required to avoid error message
                                                                                     // 'Cannot implicitly convert type 'WindowFormRestWebService.
                                                                                     //  Models.Forecastday[] to System.Collections.Generic.IEnumerable
                                                                                     //  <WindowFormRestWebService.Models.Forecast>'
@@ -75,7 +79,10 @@ namespace WindowsFormRestWebService
 
                 // Specify which icon to use.
                 IconNumber = 0;
+
                 // do something with the data in WU_Result
+                strWeather = WU_Result.current_observation.weather;
+                stringForecastTitle = WU_Result.forecast.txt_forecast.forecastday[ForecastNumber].title;
 
             }
             else
@@ -83,7 +90,6 @@ namespace WindowsFormRestWebService
                 // there was a problem getting the data
                 MessageBox.Show("There was a problem getting the data");
             }
-
 
                         // Display the forecast data.
                         DisplayData(ForecastNumber);
@@ -154,7 +160,11 @@ namespace WindowsFormRestWebService
                             //string strJSON = json.ToString();
                             //or
                             string strJSON = reader.ReadToEnd();
-                            object objResponse = JsonConvert.DeserializeObject<Rootobject>(strJSON);
+                            //object objResponse = JsonConvert.DeserializeObject<Rootobject>(strJSON);
+                            //or
+                            var rootResult = JsonConvert.DeserializeObject<Rootobject>(strJSON); 
+                            string strWeather = rootResult.current_observation.weather;
+                            string strForecastTitle = rootResult.forecast.txt_forecast.forecastday[0].title;
 
                         }
 
@@ -200,8 +210,13 @@ namespace WindowsFormRestWebService
 
                     // if you want all the "raw data" as a string
                     // just use: responseData.ToString()
-
+                    // or
                     wUData = JsonConvert.DeserializeObject<Rootobject>(responseData);
+                    // or
+                    //var rootResult = JsonConvert.DeserializeObject<Rootobject>(responseData);
+                    //string strWeather = rootResult.current_observation.weather;
+                    //string strForecastTitle = rootResult.forecast.txt_forecast.forecastday[0].title;
+
 
 
                 }
