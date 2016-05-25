@@ -8,6 +8,7 @@ namespace WindowsFormRestWebService.Models
 {
 
 
+
     public class Rootobject
     {
         public Response response { get; set; }
@@ -124,8 +125,8 @@ namespace WindowsFormRestWebService.Models
         public int dewpoint_f { get; set; }
         public int dewpoint_c { get; set; }
         public string heat_index_string { get; set; }
-        public string heat_index_f { get; set; }
-        public string heat_index_c { get; set; }
+        public int heat_index_f { get; set; }
+        public int heat_index_c { get; set; }
         public string windchill_string { get; set; }
         public string windchill_f { get; set; }
         public string windchill_c { get; set; }
@@ -284,8 +285,8 @@ namespace WindowsFormRestWebService.Models
 
     public class Qpf_Day
     {
-        public float _in { get; set; }
-        public int mm { get; set; }
+        public float? _in { get; set; }
+        public int? mm { get; set; }
     }
 
     public class Qpf_Night
@@ -302,8 +303,8 @@ namespace WindowsFormRestWebService.Models
 
     public class Snow_Day
     {
-        public float _in { get; set; }
-        public float cm { get; set; }
+        public float? _in { get; set; }
+        public float? cm { get; set; }
     }
 
     public class Snow_Night
@@ -327,6 +328,7 @@ namespace WindowsFormRestWebService.Models
         public string dir { get; set; }
         public int degrees { get; set; }
     }
+
 
 
 

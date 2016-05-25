@@ -57,10 +57,18 @@ namespace WindowsFormRestWebService
                 string strWeather = WU_Result.current_observation.weather;
                 string stringForecastTitle = WU_Result.forecast.txt_forecast.forecastday[0].title; 
 
-                IEnumerable aForecast = WU_Result.forecast.txt_forecast.forecastday; //Keyword IEnumerable is required to avoid error message
-                                                                                    // 'Cannot implicitly convert type 'WindowFormRestWebService.
-                                                                                    //  Models.Forecastday[] to System.Collections.Generic.IEnumerable
-                                                                                    //  <WindowFormRestWebService.Models.Forecast>'
+
+                IEnumerable<Forecastday> aForecast = WU_Result.forecast.txt_forecast.forecastday; //Keyword IEnumerable is required to avoid error message
+                                                                                     // 'Cannot implicitly convert type 'WindowFormRestWebService.
+                                                                                     //  Models.Forecastday[] to System.Collections.Generic.IEnumerable
+                                                                                     //  <WindowFormRestWebService.Models.Forecast>'
+
+                foreach (var fday in aForecast)
+                {
+                    string strTitle = fday.title;
+                    string strIcon = fday.icon;
+
+                }
 
                 ICollection<Forecast> collectionOfT = aForecast as ICollection<Forecast>;
                 if (collectionOfT != null)
@@ -68,7 +76,13 @@ namespace WindowsFormRestWebService
 
                 ICollection collection = aForecast as ICollection;
                 if (collection != null)
-                    MaxForecasts = collection.Count -1;
+                    MaxForecasts = collection.Count - 1;
+
+                foreach (var item in collection)
+                {
+                    string strTitle = item.ToString();
+                }
+
 
 
                 // Define the maximum number of forecasts.
@@ -83,6 +97,8 @@ namespace WindowsFormRestWebService
                 // do something with the data in WU_Result
                 strWeather = WU_Result.current_observation.weather;
                 stringForecastTitle = WU_Result.forecast.txt_forecast.forecastday[ForecastNumber].title;
+
+
 
             }
             else
@@ -181,7 +197,7 @@ namespace WindowsFormRestWebService
                     // End the loop.
                     TryAgain = DialogResult.No;
                 }
-                catch (Exception e)
+                catch (Exception e)     
                 {
                     TryAgain = MessageBox.Show(
                         "Couldn't obtain the weather data!\r\nTry Again?",
@@ -216,8 +232,6 @@ namespace WindowsFormRestWebService
                     //var rootResult = JsonConvert.DeserializeObject<Rootobject>(responseData);
                     //string strWeather = rootResult.current_observation.weather;
                     //string strForecastTitle = rootResult.forecast.txt_forecast.forecastday[0].title;
-
-
 
                 }
             }
