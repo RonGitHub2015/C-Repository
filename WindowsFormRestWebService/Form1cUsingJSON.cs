@@ -50,41 +50,53 @@ namespace WindowsFormRestWebService
         private async void btnGetForecast_Click(object sender, EventArgs e)
         {
             string strLocation = txtLocation.Text;
-            Rootobject WU_Result = await RequestWeatherForecast.GetWeather(strLocation);
-
-            if (WU_Result != null)
+            try
             {
-                aForecastday = WU_Result.forecast.txt_forecast.forecastday; 
+                Rootobject WU_Result = await RequestWeatherForecast.GetWeather(strLocation);
 
-                ICollection<Forecastday> collectionOfT = aForecastday as ICollection<Forecastday>;
-                if (collectionOfT != null)
-                    MaxForecasts = collectionOfT.Count;
 
-                ICollection collection = aForecastday as ICollection;
-                if (collection != null)
-                    MaxForecasts = collection.Count - 1;
+                if (WU_Result != null)
+                {
+                    aForecastday = WU_Result.forecast.txt_forecast.forecastday; 
 
-                // Specify which forecast to use.
-                ForecastNumber = 0;
+                    ICollection<Forecastday> collectionOfT = aForecastday as ICollection<Forecastday>;
+                    if (collectionOfT != null)
+                        MaxForecasts = collectionOfT.Count;
 
-                // Specify which icon to use.
-                IconNumber = 0;
+                    ICollection collection = aForecastday as ICollection;
+                    if (collection != null)
+                        MaxForecasts = collection.Count - 1;
 
-                // do something with the data in WU_Result
-                // Display the forecast data.
-                DisplayData(ForecastNumber);
+                    // Specify which forecast to use.
+                    ForecastNumber = 0;
+
+                    // Specify which icon to use.
+                    IconNumber = 0;
+
+                    // do something with the data in WU_Result
+                    // Display the forecast data.
+                    DisplayData(ForecastNumber);
+                }
+                else
+                {
+                    // there was a problem getting the data
+                    MessageBox.Show("There was a problem getting the data");
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                // there was a problem getting the data
-                MessageBox.Show("There was a problem getting the data");
+
+                MessageBox.Show("Error" + ex);
             }
+
+
 
         }
 
 
         //---------------------------------------------------------------------------------------------------//
- 
+
 
         public void DisplayData(Int32 FNumber)
         {

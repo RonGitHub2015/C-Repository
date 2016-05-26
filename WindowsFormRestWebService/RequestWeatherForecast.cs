@@ -17,7 +17,8 @@ namespace WindowsFormRestWebService
         public static async Task<Rootobject> GetWeather(string strLocation)
 
         {
-
+            //"http://api.wunderground.com/api/4d7d78f1c8917220/geolookup/conditions/forecast/q/CA/San_Francisco.json"
+            //"http://api.wunderground.com/api/4d7d78f1c8917220/geolookup/conditions/forecast/q/UK/London.json"
             //string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/conditions/q/";
             //string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/";
             string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/geolookup/conditions/forecast/q/";
@@ -25,8 +26,8 @@ namespace WindowsFormRestWebService
 
             Rootobject wUData = null;
 
-            try
-            {
+            //try
+            //{
                 using (var client = new HttpClient())
                 {
                     string repUrl = strAPIUrl + strAPILocation + ".json";
@@ -42,13 +43,12 @@ namespace WindowsFormRestWebService
                         return wUData;
                     }
                 }
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-
-            
+            //}
+            //catch (Exception e)
+            //{
+            //    return null;
+            //}
+                       
 
         }
 
