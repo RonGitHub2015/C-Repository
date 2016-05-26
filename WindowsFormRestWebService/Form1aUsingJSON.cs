@@ -66,6 +66,9 @@ namespace WindowsFormRestWebService
                 // Specify which forecast to use.
                 ForecastNumber = 0;
 
+                // Display the forecast data.
+                DisplayData(ForecastNumber);
+
             }
             else
             {
@@ -73,8 +76,7 @@ namespace WindowsFormRestWebService
                 MessageBox.Show("There was a problem getting the data");
             }
 
-                        // Display the forecast data.
-                        DisplayData(ForecastNumber);
+
         }
 
         //---------------------------------------------------------------------------------------------------

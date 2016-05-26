@@ -28,27 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtLocatiom = new System.Windows.Forms.TextBox();
+            this.txtLocation = new System.Windows.Forms.TextBox();
             this.wbIcon = new System.Windows.Forms.WebBrowser();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblForecast = new System.Windows.Forms.Label();
             this.txtForecast = new System.Windows.Forms.TextBox();
             this.lblLocation = new System.Windows.Forms.Label();
-            this.lblIconSelect = new System.Windows.Forms.Label();
-            this.IconSelect = new System.Windows.Forms.NumericUpDown();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.IconSelect)).BeginInit();
+            this.btnGetForecast = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtLocatiom
+            // txtLocation
             // 
-            this.txtLocatiom.Location = new System.Drawing.Point(12, 32);
-            this.txtLocatiom.Name = "txtLocatiom";
-            this.txtLocatiom.Size = new System.Drawing.Size(100, 20);
-            this.txtLocatiom.TabIndex = 0;
+            this.txtLocation.Location = new System.Drawing.Point(12, 32);
+            this.txtLocation.Name = "txtLocation";
+            this.txtLocation.Size = new System.Drawing.Size(100, 20);
+            this.txtLocation.TabIndex = 0;
             // 
             // wbIcon
             // 
@@ -103,27 +101,10 @@
             this.lblLocation.TabIndex = 14;
             this.lblLocation.Text = "&Location";
             // 
-            // lblIconSelect
-            // 
-            this.lblIconSelect.AutoSize = true;
-            this.lblIconSelect.Location = new System.Drawing.Point(118, 58);
-            this.lblIconSelect.Name = "lblIconSelect";
-            this.lblIconSelect.Size = new System.Drawing.Size(75, 13);
-            this.lblIconSelect.TabIndex = 15;
-            this.lblIconSelect.Text = "&Icon Selection";
-            // 
-            // IconSelect
-            // 
-            this.IconSelect.Location = new System.Drawing.Point(121, 74);
-            this.IconSelect.Name = "IconSelect";
-            this.IconSelect.Size = new System.Drawing.Size(44, 20);
-            this.IconSelect.TabIndex = 16;
-            this.IconSelect.ValueChanged += new System.EventHandler(this.IconSelect_ValueChanged);
-            // 
             // btnPrevious
             // 
             this.btnPrevious.Enabled = false;
-            this.btnPrevious.Location = new System.Drawing.Point(210, 61);
+            this.btnPrevious.Location = new System.Drawing.Point(200, 92);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(75, 23);
             this.btnPrevious.TabIndex = 18;
@@ -133,7 +114,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(210, 32);
+            this.btnNext.Location = new System.Drawing.Point(200, 58);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 17;
@@ -143,7 +124,7 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(210, 90);
+            this.btnQuit.Location = new System.Drawing.Point(200, 130);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(75, 23);
             this.btnQuit.TabIndex = 19;
@@ -151,26 +132,34 @@
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
-            // Form1UsingJSON
+            // btnGetForecast
+            // 
+            this.btnGetForecast.Location = new System.Drawing.Point(174, 29);
+            this.btnGetForecast.Name = "btnGetForecast";
+            this.btnGetForecast.Size = new System.Drawing.Size(112, 23);
+            this.btnGetForecast.TabIndex = 20;
+            this.btnGetForecast.Text = "Get Forecast";
+            this.btnGetForecast.UseVisualStyleBackColor = true;
+            this.btnGetForecast.Click += new System.EventHandler(this.btnGetForecast_Click);
+            // 
+            // Form1cUsingJSON
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 305);
+            this.Controls.Add(this.btnGetForecast);
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnQuit);
-            this.Controls.Add(this.IconSelect);
-            this.Controls.Add(this.lblIconSelect);
             this.Controls.Add(this.lblLocation);
             this.Controls.Add(this.txtForecast);
             this.Controls.Add(this.lblForecast);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.wbIcon);
-            this.Controls.Add(this.txtLocatiom);
-            this.Name = "Form1UsingJSON";
-            this.Text = "Form1UsingJSON";
-            ((System.ComponentModel.ISupportInitialize)(this.IconSelect)).EndInit();
+            this.Controls.Add(this.txtLocation);
+            this.Name = "Form1cUsingJSON";
+            this.Text = "Form1cUsingJSON";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,17 +167,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtLocatiom;
+        private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.WebBrowser wbIcon;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblForecast;
         private System.Windows.Forms.TextBox txtForecast;
         private System.Windows.Forms.Label lblLocation;
-        private System.Windows.Forms.Label lblIconSelect;
-        private System.Windows.Forms.NumericUpDown IconSelect;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnGetForecast;
     }
 }
