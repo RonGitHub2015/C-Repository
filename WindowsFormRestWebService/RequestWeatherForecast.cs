@@ -17,7 +17,10 @@ namespace WindowsFormRestWebService
         public static async Task<string> GetConditions(string strLocation)
 
         {
-            string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/conditions/q/";
+
+            //string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/conditions/q/";
+            //string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/";
+            string strAPIUrl = "http://api.wunderground.com/api/4d7d78f1c8917220/geolookup/conditions/forecast/q/";
             string strAPILocation = strLocation;             //UK / London.json
 
             using (var client = new HttpClient() )

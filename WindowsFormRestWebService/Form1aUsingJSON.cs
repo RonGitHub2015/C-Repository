@@ -1,23 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using System.Net.Http;
 using WindowsFormRestWebService.Models;
 using System.Net;
 using System.IO;
-using Newtonsoft.Json.Linq;
 using System.Collections;
 
 namespace WindowsFormRestWebService
 {
-    public partial class Form1UsingJSON : Form
+    public partial class Form1aUsingJSON : Form
     {
         // Holds all of the weather data.
         //XDocument GetData;
@@ -26,26 +20,20 @@ namespace WindowsFormRestWebService
         IEnumerable<Forecastday> aForecastday;
 
         // Specifies which forecast to use.
-        static Int32 ForecastNumber;
+        Int32 ForecastNumber;
 
         // Defines the maximum number of forecasts.
-        static Int32 MaxForecasts;
+        Int32 MaxForecasts;
 
-        // Contains a list of icons associated with the forecast.
-        IEnumerable<string> Icons;
-
-        // Specifies which icon to use.
-        static Int32 IconNumber;
-
-
-
-        public Form1UsingJSON()
+        public Form1aUsingJSON()
         {
             InitializeComponent();
 
             string wuUri = @"http://api.wunderground.com/api/4d7d78f1c8917220/geolookup/conditions/forecast/q/Dhaka,Bangladesh.json";
 
             //string wuUri = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/UK/London.json";
+            //string wuUri = "http://api.wunderground.com/api/4d7d78f1c8917220/conditions/q/UK/London.json";
+
 
             GetForecast(wuUri);
 
@@ -77,9 +65,6 @@ namespace WindowsFormRestWebService
 
                 // Specify which forecast to use.
                 ForecastNumber = 0;
-
-                // Specify which icon to use.
-                IconNumber = 0;
 
             }
             else
@@ -239,16 +224,9 @@ namespace WindowsFormRestWebService
                 wbIcon.Url = new System.Uri(qf.icon_url); //webbrowser1.Url = new System.Uri(my.settings.website);
             }
 
-            // Obtain a list of icons associated with the forecast.
-            //Icons = Forecast.ElementAt(FNumber).Element("icons").Elements("icon_set");
-
-            // Define the maximum number of available icons.
-            //IconSelect.Maximum = Icons.Count() - 1;
-
-            // Display the icon on screen.
-            //wbIcon.Url = new Uri(Icons.ElementAt(IconNumber).Element("icon_url").Value);
-
         }
+
+        //------------------------------------------------------------------------------------------------------------//
 
         private void btnNext_Click(object sender, EventArgs e)
         {

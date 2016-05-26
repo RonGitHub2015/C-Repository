@@ -17,7 +17,7 @@ namespace WindowsFormRestWebService
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1UsingJSON());
+            Application.Run(new Form1bUsingJSON());
         }
     }
 }

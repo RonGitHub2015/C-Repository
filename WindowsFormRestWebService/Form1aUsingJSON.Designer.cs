@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormRestWebService
 {
-    partial class Form1UsingJSON
+    partial class Form1aUsingJSON
     {
         /// <summary>
         /// Required designer variable.
@@ -131,7 +131,7 @@
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
-            // Form1UsingJSON
+            // Form1aUsingJSON
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,8 +146,8 @@
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.wbIcon);
             this.Controls.Add(this.txtLocatiom);
-            this.Name = "Form1UsingJSON";
-            this.Text = "Form1UsingJSON";
+            this.Name = "Form1aUsingJSON";
+            this.Text = "Form1aUsingJSON";
             this.ResumeLayout(false);
             this.PerformLayout();
 
