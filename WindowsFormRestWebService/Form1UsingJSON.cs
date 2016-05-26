@@ -226,25 +226,18 @@ namespace WindowsFormRestWebService
                 .Where(x => (x.period == FNumber))
                 .Select(x => new
                             { title = x.title,
-                              fcttext = x.fcttext
+                              fcttext = x.fcttext,
+                              icon = x.icon,
+                              icon_url = x.icon_url
                             }
                        );
-
-            var count = qFields.ToList().Count;
-            System.Console.WriteLine("Number of rows retrieved by the query = " + count.ToString());
 
             foreach (var qf in qFields)
             {
                 txtTitle.Text = qf.title;
                 txtForecast.Text = qf.fcttext;
-
-                //System.Console.WriteLine("CR Customer = " + qcr.CRCustomer + " CR Partner = " + qcr.CRPartner + " CR From = " + qcr.CRFrom);
+                wbIcon.Url = new System.Uri(qf.icon_url); //webbrowser1.Url = new System.Uri(my.settings.website);
             }
-
-            
-
-            // Display detailed forecast information.
-            //txtForecast.Text = Forecast.ElementAt(FNumber).Element("fcttext").Value;
 
             // Obtain a list of icons associated with the forecast.
             //Icons = Forecast.ElementAt(FNumber).Element("icons").Elements("icon_set");
@@ -254,6 +247,7 @@ namespace WindowsFormRestWebService
 
             // Display the icon on screen.
             //wbIcon.Url = new Uri(Icons.ElementAt(IconNumber).Element("icon_url").Value);
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -303,23 +297,6 @@ namespace WindowsFormRestWebService
             // End the program.
             Close();
         }
-
-        private void IconSelect_ValueChanged(object sender, EventArgs e)
-        {
-            // Set the icon value to the value of the up/down control.
-            IconNumber = (Int32)IconSelect.Value;
-
-            // Display the information.
-            DisplayData(ForecastNumber);
-        }
-
-
-
-
-
-
-
-
 
     }
 }

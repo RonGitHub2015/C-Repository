@@ -35,12 +35,9 @@
             this.lblForecast = new System.Windows.Forms.Label();
             this.txtForecast = new System.Windows.Forms.TextBox();
             this.lblLocation = new System.Windows.Forms.Label();
-            this.lblIconSelect = new System.Windows.Forms.Label();
-            this.IconSelect = new System.Windows.Forms.NumericUpDown();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.IconSelect)).BeginInit();
             this.SuspendLayout();
             // 
             // txtLocatiom
@@ -103,23 +100,6 @@
             this.lblLocation.TabIndex = 14;
             this.lblLocation.Text = "&Location";
             // 
-            // lblIconSelect
-            // 
-            this.lblIconSelect.AutoSize = true;
-            this.lblIconSelect.Location = new System.Drawing.Point(118, 58);
-            this.lblIconSelect.Name = "lblIconSelect";
-            this.lblIconSelect.Size = new System.Drawing.Size(75, 13);
-            this.lblIconSelect.TabIndex = 15;
-            this.lblIconSelect.Text = "&Icon Selection";
-            // 
-            // IconSelect
-            // 
-            this.IconSelect.Location = new System.Drawing.Point(121, 74);
-            this.IconSelect.Name = "IconSelect";
-            this.IconSelect.Size = new System.Drawing.Size(44, 20);
-            this.IconSelect.TabIndex = 16;
-            this.IconSelect.ValueChanged += new System.EventHandler(this.IconSelect_ValueChanged);
-            // 
             // btnPrevious
             // 
             this.btnPrevious.Enabled = false;
@@ -159,8 +139,6 @@
             this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnQuit);
-            this.Controls.Add(this.IconSelect);
-            this.Controls.Add(this.lblIconSelect);
             this.Controls.Add(this.lblLocation);
             this.Controls.Add(this.txtForecast);
             this.Controls.Add(this.lblForecast);
@@ -170,7 +148,6 @@
             this.Controls.Add(this.txtLocatiom);
             this.Name = "Form1UsingJSON";
             this.Text = "Form1UsingJSON";
-            ((System.ComponentModel.ISupportInitialize)(this.IconSelect)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,8 +162,6 @@
         private System.Windows.Forms.Label lblForecast;
         private System.Windows.Forms.TextBox txtForecast;
         private System.Windows.Forms.Label lblLocation;
-        private System.Windows.Forms.Label lblIconSelect;
-        private System.Windows.Forms.NumericUpDown IconSelect;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnQuit;

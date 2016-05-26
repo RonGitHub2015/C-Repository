@@ -59,6 +59,8 @@ namespace RESTService
                             "http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="
                             + txtLocation.Text);
 
+                    //http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query=CA/San_Francisco
+
                     // End the loop.
                     TryAgain = DialogResult.No;
                 }
