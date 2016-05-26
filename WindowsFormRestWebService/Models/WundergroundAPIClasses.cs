@@ -8,7 +8,6 @@ namespace WindowsFormRestWebService.Models
 {
 
 
-
     public class Rootobject
     {
         public Response response { get; set; }
@@ -125,8 +124,8 @@ namespace WindowsFormRestWebService.Models
         public int dewpoint_f { get; set; }
         public int dewpoint_c { get; set; }
         public string heat_index_string { get; set; }
-        public int heat_index_f { get; set; }
-        public int heat_index_c { get; set; }
+        public string heat_index_f { get; set; }
+        public string heat_index_c { get; set; }
         public string windchill_string { get; set; }
         public string windchill_f { get; set; }
         public string windchill_c { get; set; }
@@ -188,8 +187,6 @@ namespace WindowsFormRestWebService.Models
 
     public class Estimated
     {
-        public int estimated { get; set; }
-        public string description { get; set; }
     }
 
     public class Forecast
@@ -328,8 +325,6 @@ namespace WindowsFormRestWebService.Models
         public string dir { get; set; }
         public int degrees { get; set; }
     }
-
-
 
 
 }
