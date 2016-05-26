@@ -43,7 +43,7 @@ namespace WindowsFormRestWebService
         {
             InitializeComponent();
 
-            string wuUri = @"http://api.wunderground.com/api/02e5dd8c34e3e657/geolookup/conditions/forecast/q/Dhaka,Bangladesh.json";
+            string wuUri = @"http://api.wunderground.com/api/4d7d78f1c8917220/geolookup/conditions/forecast/q/Dhaka,Bangladesh.json";
 
             //string wuUri = "http://api.wunderground.com/api/4d7d78f1c8917220/forecast/q/UK/London.json";
 
@@ -53,33 +53,18 @@ namespace WindowsFormRestWebService
 
             if (WU_Result != null)
             {
-
-                string strWeather = WU_Result.current_observation.weather;
-                string stringForecastTitle = WU_Result.forecast.txt_forecast.forecastday[0].title; 
-
-
-                //IEnumerable<Forecastday> aForecast = WU_Result.forecast.txt_forecast.forecastday; //Keyword IEnumerable is required to avoid error message
-                                                                                                  // 'Cannot implicitly convert type 'WindowFormRestWebService.
-                                                                                                  //  Models.Forecastday[] to System.Collections.Generic.IEnumerable
-                                                                                                  //  <WindowFormRestWebService.Models.Forecast>'
+                //string strWeather = WU_Result.current_observation.weather;
+                //string stringForecastTitle = WU_Result.forecast.txt_forecast.forecastday[0].title; 
 
                 aForecastday = WU_Result.forecast.txt_forecast.forecastday;
 
-                foreach (var fday in aForecastday)
-                {
-                    string strTitle = fday.title;
-                    string strIcon = fday.icon;
+                //foreach (var fday in aForecastday)
+                //{
+                //    string strTitle = fday.title;
+                //    string strIcon = fday.icon;
 
-                }
-
-                
-                //ICollection<Forecast> collectionOfT = aForecast as ICollection<Forecast>;
-                //if (collectionOfT != null)
-                //    MaxForecasts = collectionOfT.Count;
-
-                //ICollection collection = aForecast as ICollection;
-                //if (collection != null)
-                //    MaxForecasts = collection.Count - 1;
+                //}
+               
 
                 //Both the following methods of counting the number of Forecast days work
                 ICollection<Forecastday> collectionOfT = aForecastday as ICollection<Forecastday>;
@@ -90,22 +75,11 @@ namespace WindowsFormRestWebService
                 if (collection != null)
                     MaxForecasts = collection.Count - 1;
 
-
-
-                // Define the maximum number of forecasts.
-                //MaxForecasts = Forecast.Count() - 1;
-
                 // Specify which forecast to use.
                 ForecastNumber = 0;
 
                 // Specify which icon to use.
                 IconNumber = 0;
-
-                // do something with the data in WU_Result
-                strWeather = WU_Result.current_observation.weather;
-                stringForecastTitle = WU_Result.forecast.txt_forecast.forecastday[ForecastNumber].title;
-
-
 
             }
             else
@@ -118,31 +92,7 @@ namespace WindowsFormRestWebService
                         DisplayData(ForecastNumber);
         }
 
-
-
-
-        static async void ApiCallGetConditions()
-        {
-
-            using (var client = new HttpClient())
-            {
-
-                HttpResponseMessage response = await client.GetAsync("http://api.wunderground.com/api/4d7d78f1c8917220/conditions/q/UK/London.json");
-
-                response.EnsureSuccessStatusCode();
-
-                using (HttpContent content = response.Content)
-                {
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    var rootResult = JsonConvert.DeserializeObject<Rootobject>(responseBody);        //parsed_json['location']['city'];
-                    string strWeather = rootResult.current_observation.weather;
-
-                }
-            }
-
-        }
-
-       
+        //---------------------------------------------------------------------------------------------------
 
         static void GetForecast(string targetURI)
         {
@@ -157,10 +107,7 @@ namespace WindowsFormRestWebService
                 try
                 {
                     // Get the weather data.
-                    
-                    //HttpWebRequest request = WebRequest.Create(strRequestURL) as HttpWebRequest;
                     HttpWebRequest request = WebRequest.Create(targetURI) as HttpWebRequest;
-
 
                     using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
                     {
@@ -177,7 +124,6 @@ namespace WindowsFormRestWebService
                         {
                             StreamReader reader = new StreamReader(stream);
 
-
                             //JObject json = JObject.Parse(reader.ReadToEnd());
                             //string strJSON = json.ToString();
                             //or
@@ -190,15 +136,7 @@ namespace WindowsFormRestWebService
 
                         }
 
-
-                        //RequestWeatherForecast jsonSerializer = new RequestWeatherForecast(typeof(Response));
-                        //object objResponse = jsonSerializer.ReadObject(response.GetResponseStream());
-                        //Response jsonResponse
-                        //= objResponse as Response;
-                        //return jsonResponse;
                     }
-
-
 
                     // End the loop.
                     TryAgain = DialogResult.No;
@@ -213,6 +151,8 @@ namespace WindowsFormRestWebService
                 }
             }
         }
+
+        //---------------------------------------------------------------------------------------------------
 
 
         private Rootobject GetForecast2(string targetURI)
@@ -249,25 +189,59 @@ namespace WindowsFormRestWebService
             return wUData;
         }
 
+        //------------------------------------------------------------------------------------------------------------------//
+
         public void DisplayData(Int32 FNumber)
         {
 
-            foreach (var fday in aForecastday)
-            {
-                string strTitle = fday.title;
-                string strIcon = fday.icon;
-            }
-
-
+            //foreach (var fday in aForecastday)
+            //{
+            //    string strTitle = fday.title;
+            //    string strIcon = fday.icon;
+            //}
 
             // Display the title of the current forecast.
-            //txtTitle.Text = Forecast.ElementAt(FNumber).Element("title").Value;
-            //txtTitle.Text = aForecast.ElementAt(FNumber).txt_forecast.forecastday[FNumber].ToString();
+
             txtTitle.Text = (from aforecastday in aForecastday.AsEnumerable()
                              where aforecastday.period == FNumber
                              select aforecastday.title).First();
 
-            //txtTitle.Text = Forecast.ElementAt(FNumber).txt_forecast.forecastday[FNumber].title;
+            //txtTitle.Text = aForecastday.AsEnumerable().Select(x => new { title = x.Field<int>("title") }); - the syntax is not correct
+
+            //var varTitle = aForecastday.AsEnumerable()
+            //    .Where(x => (x.period == FNumber))
+            //    .Select(x => new { title = x.title});
+
+            //txtTitle.Text = varTitle.title; 
+
+           //aForecastday
+           //TIMETABLEs
+           //   .Where(t => (t.SlotId == (Int32?)1))
+           //   .Select(t => new {SlotEntry = t.SlotEntry})
+
+
+           //txtTitle.Text = Forecast.ElementAt(FNumber).txt_forecast.forecastday[FNumber].title;
+
+           var qFields = aForecastday.AsEnumerable()
+                .Where(x => (x.period == FNumber))
+                .Select(x => new
+                            { title = x.title,
+                              fcttext = x.fcttext
+                            }
+                       );
+
+            var count = qFields.ToList().Count;
+            System.Console.WriteLine("Number of rows retrieved by the query = " + count.ToString());
+
+            foreach (var qf in qFields)
+            {
+                txtTitle.Text = qf.title;
+                txtForecast.Text = qf.fcttext;
+
+                //System.Console.WriteLine("CR Customer = " + qcr.CRCustomer + " CR Partner = " + qcr.CRPartner + " CR From = " + qcr.CRFrom);
+            }
+
+            
 
             // Display detailed forecast information.
             //txtForecast.Text = Forecast.ElementAt(FNumber).Element("fcttext").Value;
