@@ -13,9 +13,8 @@ namespace WindowsFormsApplication5
 {
     public partial class Form1 : Form
     {
-
+        //
         //static string strConnection = "Data Source=PC-Ron\\SQLSERVERRON;Initial Catalog=TempWork;Integrated Security=True";
-        //static string strConnection = "Data Source=SQL-Test3.london.edu;Initial Catalog=TempWork;User ID=rfrancis;Password=rfrancis123";
         static string strConnection = "Data Source=sql-ead.dev.london.edu;Initial Catalog=TempWork;User ID=rfrancis;Password=(ex1to1)";
         
         static string struspTable1AddRecord = "usp_Ron1TableInsert";
