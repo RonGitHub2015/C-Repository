@@ -14,9 +14,9 @@ namespace WindowsFormsApplication5
     public partial class Form1 : Form
     {
         //
-        //static string strConnection = "Data Source=PC-Ron\\SQLSERVERRON;Initial Catalog=TempWork;Integrated Security=True";
-        static string strConnection = "Data Source=sql-ead.dev.london.edu;Initial Catalog=TempWork;User ID=rfrancis;Password=(ex1to1)";
-        
+        static string strConnection = "Data Source=PC-Ron\\SQLSERVERRON;Initial Catalog=TempWork;Integrated Security=True";
+        //static string strConnection = "Data Source=sql-ead.dev.london.edu;Initial Catalog=TempWork;User ID=rfrancis;Password=(ex1to1)";
+
         static string struspTable1AddRecord = "usp_Ron1TableInsert";
         static string struspTable1UpdateRecord = "usp_Ron1TableUpdate";
         static string struspTable1Table2Read = "usp_Ron1Ron2TableRead";
@@ -788,7 +788,13 @@ namespace WindowsFormsApplication5
                         //cmd.Parameters.Add("@NewId", SqlDbType.Int);
                         //cmd.Parameters["@FID"].Value = int2FID;
 
-                        insertedId = Convert.ToInt32(cmd.ExecuteScalar());
+                        //insertedId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        var returnParameter = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                        cmd.ExecuteNonQuery();
+                        insertedId = Convert.ToInt32(returnParameter.Value);
 
                         MessageBox.Show("InsertedId = " + insertedId);
                     }
