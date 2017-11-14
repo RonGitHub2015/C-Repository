@@ -12,10 +12,15 @@ namespace ConsoleSQLServerCS
     class Program
     {
 
+        private static string userInputRon1Text;
+        private static Boolean inputRon1YesNo;
+        private static string userInputRon1ThisOrThat;
+        private static string userInputRon1Comments;
+
 
         static void Main(string[] args)
         {
- 
+
             string stringConnectionString = "Data Source=SQL-ead.dev.london.edu;Initial Catalog=TempWork;User ID=rfrancis;Password=(ex1to1)";
             //string stringConnectionString = "Data Source=PC-Ron\\SQLSERVERRON;Initial Catalog=TempWork;Integrated Security=True";
 
@@ -30,7 +35,7 @@ namespace ConsoleSQLServerCS
             // Executing a SQL Command without a SQL parameter-------------------------------------------------------//
             // ------------------------------------------------------------------------------------------------------//
 
-            Console.WriteLine("Executing a SQL Select Command without a parameter");
+            Console.WriteLine("1 - Executing a SQL Select Command without a parameter");
 
             Console.WriteLine("Enter a Ron2Text> ");
             string userInput = "";
@@ -56,7 +61,7 @@ namespace ConsoleSQLServerCS
                     Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
 
                 }
-               
+
             }
 
 
@@ -65,7 +70,7 @@ namespace ConsoleSQLServerCS
 
             Console.WriteLine("-------------------------------------------------------------------------");
 
-            Console.WriteLine("Executing a SQL Insert Command without a parameter");
+            Console.WriteLine("2 - Executing a SQL Insert Command without a parameter");
 
             Console.WriteLine("Enter text for Ron1Text> ");
             string userInputRon1Text = "";
@@ -77,9 +82,8 @@ namespace ConsoleSQLServerCS
             Boolean inputRon1YesNo = false;
             if (userInputRon1YesNo.ToUpper() == "Y")
             {
-                inputRon1YesNo = true; 
+                inputRon1YesNo = true;
             }
-
 
             Console.WriteLine("Enter This or That for Ron1ThisOrThat> ");
             string userInputRon1ThisOrThat = "";
@@ -90,7 +94,10 @@ namespace ConsoleSQLServerCS
             userInputRon1Comments = Console.ReadLine();
 
             sqlSelectString = "Insert into Ron1Table (Ron2FID, Ron1Text, Ron1YesNo, Ron1ThisOrThat, Ron1Comments) " +
-                                     "values (2, '" +  userInputRon1Text + "', '" + inputRon1YesNo + "', '" + userInputRon1ThisOrThat + "', '" + userInputRon1Comments + "')";
+                                     "values (2, '" + userInputRon1Text + "', '" + inputRon1YesNo + "', '" + userInputRon1ThisOrThat + "', '" + userInputRon1Comments + "')";
+            //the sqlSelectString will contain the following if userInputRon1Text = 'ttttt' and userinputRon1YesNo = 'Y' and userInputRon1ThisOrThat = 'this' and userInputRon1Comments = 'yyyyy'
+            //Insert into Ron1Table (Ron2FID, Ron1Text, Ron1YesNo, Ron1ThisOrThat, Ron1Comments) values (2, 'ttttt', 'True', 'this', 'yyyyy')
+            
             //sqlSelectString = "Insert into Ron1 Table " +
             //                         "values (value1, value2, value3)";
 
@@ -117,7 +124,7 @@ namespace ConsoleSQLServerCS
             Console.WriteLine("-------------------------------------------------------------------------");
 
 
-            Console.WriteLine("Executing a SQL Update Command without a parameter");
+            Console.WriteLine("3 -Executing a SQL Update Command without a parameter");
 
             Console.WriteLine("Enter text for Ron1Text> ");
             userInputRon1Text = "";
@@ -167,7 +174,7 @@ namespace ConsoleSQLServerCS
 
             Console.WriteLine("-------------------------------------------------------------------------");
 
-            Console.WriteLine("Executing a SQL Delete Command without a parameter");
+            Console.WriteLine("4 - Executing a SQL Delete Command without a parameter");
 
             Console.WriteLine("Press enter to delete a record");
             userInput = "";
@@ -208,7 +215,7 @@ namespace ConsoleSQLServerCS
             // Executing a SQL Command using a SQL parameter------------------------------------------------------//
             // ---------------------------------------------------------------------------------------------------//
 
-            Console.WriteLine("Executing a SQL Select Command using a SQL parameter in the IN clause");
+            Console.WriteLine("5 - Executing a SQL Select Command using a SQL parameter in the IN clause");
 
 
             //string stringSQLCommand = "Select Ron1UID, Ron1Text, Ron2Text from Ron1Table " +
@@ -313,7 +320,7 @@ namespace ConsoleSQLServerCS
                              "where Ron2Text = @Ron2Text";
 
 
-            Console.WriteLine("Executing a SQL Select Command using a SQL parameter - Method 1 ");
+            Console.WriteLine("6 - Executing a SQL Select Command using a SQL parameter - Method 1 ");
 
             Console.WriteLine("Enter a Ron2Text> ");
             userInput = "";
@@ -365,7 +372,7 @@ namespace ConsoleSQLServerCS
             Console.WriteLine("-------------------------------------------------------------------------");
 
 
-            Console.WriteLine("Executing a SQL Select Command using a SQL parameter - Method 2 ");
+            Console.WriteLine("7 - Executing a SQL Select Command using a SQL parameter - Method 2 ");
 
             Console.WriteLine("Enter a Ron2Text> ");
             userInput = "";
@@ -417,7 +424,7 @@ namespace ConsoleSQLServerCS
             //-------------------------------------------------------------------------------------------------------------------------------------//
 
 
-            Console.WriteLine("Executing Stored Procedures that Return Rows Using a Command Object ");
+            Console.WriteLine("8 - Executing Stored Procedures that Return Rows Using a Command Object ");
 
             using (conn = new SqlConnection(stringConnectionString))
             {
@@ -445,7 +452,7 @@ namespace ConsoleSQLServerCS
 
             // Using SQL Parameter
 
-            Console.WriteLine("Executing Stored Procedures that Return Rows Using a Command Object - using a SQL parameter - Method 1 ");
+            Console.WriteLine("9 - Executing Stored Procedures that Return Rows Using a Command Object - using a SQL parameter - Method 1 ");
 
             using (conn = new SqlConnection(stringConnectionString))
             {
@@ -478,7 +485,7 @@ namespace ConsoleSQLServerCS
 
             conn.Close();
 
-           Console.WriteLine("Executing Stored Procedures that Return Rows Using a Command Object - using SQL parameters for selection and Order By ");
+           Console.WriteLine("10 - Executing Stored Procedures that Return Rows Using a Command Object - using SQL parameters for selection and Order By ");
 
             using (conn = new SqlConnection(stringConnectionString))
             {
@@ -521,7 +528,7 @@ namespace ConsoleSQLServerCS
             // Executing Stored Procedures that Inserts Rows Using a Command Object                                                                //
             //-------------------------------------------------------------------------------------------------------------------------------------//
 
-            Console.WriteLine("Executing Stored Procedures that Inserts Rows Using a Command Object - using SQL parameters ");
+            Console.WriteLine("11 - Executing Stored Procedures that Inserts Rows Using a Command Object - using SQL parameters ");
 
             Console.WriteLine("Enter text for Ron1Text> ");
             userInputRon1Text = "";
