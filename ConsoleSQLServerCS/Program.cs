@@ -40,7 +40,7 @@ namespace ConsoleSQLServerCS
             Console.WriteLine("Enter a Ron2Text> ");
             string userInput = "";
             userInput = Console.ReadLine();
-            string sqlSelectString = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
+            string sqlSelectString = "Select Ron1UID, Ron2Text, Ron1Text, Ron1ThisOrThat, Ron1YesNo, Ron1Comments from Ron1Table " +
                                      "inner join Ron2Table on Ron2FID = Ron2UID " +
                                      "where Ron2Text = '" + userInput + "'";
 
@@ -58,7 +58,7 @@ namespace ConsoleSQLServerCS
                 //If field Ron1Text contains nulls then GetString(0) will fail with a system error
                 if (reader[0] != null && reader[0] != DBNull.Value)
                 {
-                    Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                    Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5)); //The 0 stands for "the 0'th column", so the first column of the result.
 
                 }
 
@@ -109,14 +109,16 @@ namespace ConsoleSQLServerCS
 
 
             // Executing SQL Statements that Return Rows Using a Command Object 
-            sqlSelectString = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
+            sqlSelectString = "Select Ron1UID, Ron2Text, Ron1Text, Ron1ThisOrThat, Ron1YesNo, Ron1Comments from Ron1Table " +
                          "inner join Ron2Table on Ron2FID = Ron2UID " +
                          "where Ron2FID = 2";
             cmd = new SqlCommand(sqlSelectString, conn);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                //Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5)); //The 0 stands for "the 0'th column", so the first column of the result.
+
             }
 
 
@@ -162,16 +164,20 @@ namespace ConsoleSQLServerCS
 
 
             // Executing SQL Statements that Return Rows Using a Command Object 
-            sqlSelectString = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
-                         "inner join Ron2Table on Ron2FID = Ron2UID " +
-                         " where Ron1Text = '" + userInputRon1Text + "'";
+            //sqlSelectString = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
+            //             "inner join Ron2Table on Ron2FID = Ron2UID " +
+            //             " where Ron1Text = '" + userInputRon1Text + "'";
+            sqlSelectString = "Select Ron1UID, Ron2Text, Ron1Text, Ron1ThisOrThat, Ron1YesNo, Ron1Comments from Ron1Table " +
+                              "inner join Ron2Table on Ron2FID = Ron2UID " +
+                              "where Ron1Text = '" + userInputRon1Text + "'";
+
             cmd = new SqlCommand(sqlSelectString, conn);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                //Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5)); //The 0 stands for "the 0'th column", so the first column of the result.
             }
-
 
             reader.Close();
             conn.Close();
@@ -194,16 +200,20 @@ namespace ConsoleSQLServerCS
 
 
             // Executing SQL Statements that Return Rows Using a Command Object 
-            sqlSelectString = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
-                         "inner join Ron2Table on Ron2FID = Ron2UID " +
-                         " where Ron1Text = '" + userInputRon1Text + "'";
+            //sqlSelectString = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
+            //             "inner join Ron2Table on Ron2FID = Ron2UID " +
+            //             " where Ron1Text = '" + userInputRon1Text + "'";
+            sqlSelectString = "Select Ron1UID, Ron2Text, Ron1Text, Ron1ThisOrThat, Ron1YesNo, Ron1Comments from Ron1Table " +
+                              "inner join Ron2Table on Ron2FID = Ron2UID " +
+                              "where Ron1Text = '" + userInputRon1Text + "'";
+
             cmd = new SqlCommand(sqlSelectString, conn);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                //Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5)); //The 0 stands for "the 0'th column", so the first column of the result.
             }
-
 
             reader.Close();
             conn.Close();
@@ -310,16 +320,18 @@ namespace ConsoleSQLServerCS
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Console.WriteLine("{0}, {1}, {2}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2)); //The 0 stands for "the 0'th column", so the first column of the result.
+                //Console.WriteLine("{0}, {1}, {2}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2)); //The 0 stands for "the 0'th column", so the first column of the result.
+                Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5), reader.GetInt32(6), reader.GetString(7));
             }
 
             reader.Close();
             Console.WriteLine("-------------------------------------------------------------------------");
 
 
-            string stringSQLCommand = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
+            string stringSQLCommand = "Select * from Ron1Table " +
                              "inner join Ron2Table on Ron2FID = Ron2UID " +
                              "where Ron2Text = @Ron2Text";
+
 
 
             Console.WriteLine("6 - Executing a SQL Select Command using a SQL parameter - Method 1 ");
@@ -338,7 +350,8 @@ namespace ConsoleSQLServerCS
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                //Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5), reader.GetInt32(6), reader.GetString(7));
             }
 
             reader.Close();
@@ -360,7 +373,9 @@ namespace ConsoleSQLServerCS
                     reader = cmd1.ExecuteReader();
                     while (reader.Read())
                     {
-                        Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                        //Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                        Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5), reader.GetInt32(6), reader.GetString(7));
+
                     }
 
                     reader.Close();
@@ -385,7 +400,7 @@ namespace ConsoleSQLServerCS
 
                 using (SqlCommand cmd1 = conn.CreateCommand())
                 {
-                    cmd1.CommandText = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
+                    cmd1.CommandText = "Select * from Ron1Table " +
                                  "inner join Ron2Table on Ron2FID = Ron2UID " +
                                  "where Ron2Text = @Ron2Text";
 
@@ -403,7 +418,8 @@ namespace ConsoleSQLServerCS
                     reader = cmd1.ExecuteReader();
                     while (reader.Read())
                     {
-                        Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                        //Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                        Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5), reader.GetInt32(6), reader.GetString(7));
                     }
 
                     reader.Close();
@@ -476,9 +492,8 @@ namespace ConsoleSQLServerCS
                     SqlDataReader reader1 = cmd1.ExecuteReader();
                     while (reader1.Read())
                     {
-                        Console.WriteLine("{0}, {1}", reader1.GetInt32(0), reader1.GetInt32(1)); //The 0 stands for "the 0'th column", so the first column of the result.
-                        //Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader1.GetInt32(0), reader1.GetInt32(1), reader1.GetString(2), reader1.GetBoolean(3), reader1.GetString(4), reader1.GetString(5));
-                        //Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}, {7}", reader1.GetInt32(0), reader1.GetInt32(1), reader1.GetString(2), reader1.GetString(3), reader1.GetBoolean(4), reader1.GetString(5), reader1.GetString(7));
+                        //Console.WriteLine("{0}, {1}", reader1.GetInt32(0), reader1.GetInt32(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                        Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", reader1.GetInt32(0), reader1.GetInt32(1), reader1.GetString(2), reader1.GetString(3), reader1.GetBoolean(4), reader1.GetString(5), reader1.GetInt32(6), reader1.GetString(7));
 
                     }
 
@@ -515,8 +530,8 @@ namespace ConsoleSQLServerCS
                     SqlDataReader reader1 = cmd1.ExecuteReader();
                     while (reader1.Read())
                     {
-                        Console.WriteLine("{0}, {1}", reader1.GetInt32(0), reader1.GetInt32(1)); //The 0 stands for "the 0'th column", so the first column of the result.
-                        //Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader1.GetInt32(0), reader1.GetInt32(1), reader1.GetString(2), reader1.GetBoolean(3), reader1.GetString(4), reader1.GetString(5));
+                        //Console.WriteLine("{0}, {1}", reader1.GetInt32(0), reader1.GetInt32(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                        Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}", reader1.GetInt32(0), reader1.GetInt32(1), reader1.GetString(2), reader1.GetString(3), reader1.GetBoolean(4), reader1.GetString(5), reader1.GetInt32(6), reader1.GetString(7));
 
                     }
 
@@ -581,7 +596,6 @@ namespace ConsoleSQLServerCS
 
                     cmd1.ExecuteNonQuery();
 
-
                     // Executing SQL Statements that Return Rows Using a Command Object 
                     sqlSelectString = "Select * from Ron1Table " +
                                  " where Ron1Text = '" + userInputRon1Text + "'"; ;
@@ -590,7 +604,7 @@ namespace ConsoleSQLServerCS
                     while (reader.Read())
                     {
                         //Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
-                        Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetBoolean(3), reader.GetString(4), reader.GetString(5));
+                        Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5));
                     }
 
                     reader.Close();
