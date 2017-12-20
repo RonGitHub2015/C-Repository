@@ -16,7 +16,7 @@ namespace ConsoleSQLServerCS
         private static Boolean inputRon1YesNo;
         private static string userInputRon1ThisOrThat;
         private static string userInputRon1Comments;
-
+        private static Int32 Ron1TableRecUID;
 
         static void Main(string[] args)
         {
@@ -72,27 +72,6 @@ namespace ConsoleSQLServerCS
 
             Console.WriteLine("2 - Executing a SQL Insert Command without a parameter");
 
-            //Console.WriteLine("Enter text for Ron1Text> ");
-            //string userInputRon1Text = "";
-            //userInputRon1Text = Console.ReadLine();
-
-            //Console.WriteLine("Enter Y or N for Ron1YesNo> ");
-            //string userInputRon1YesNo = "";
-            //userInputRon1YesNo = Console.ReadLine();
-            //Boolean inputRon1YesNo = false;
-            //if (userInputRon1YesNo.ToUpper() == "Y")
-            //{
-            //    inputRon1YesNo = true;
-            //}
-
-            //Console.WriteLine("Enter This or That for Ron1ThisOrThat> ");
-            //string userInputRon1ThisOrThat = "";
-            //userInputRon1ThisOrThat = Console.ReadLine();
-
-            //Console.WriteLine("Enter text for a Ron1Comments> ");
-            //string userInputRon1Comments = "";
-            //userInputRon1Comments = Console.ReadLine();
-
             entertextonscreen();
             
             sqlSelectString = "Insert into Ron1Table (Ron2FID, Ron1Text, Ron1YesNo, Ron1ThisOrThat, Ron1Comments) " +
@@ -130,28 +109,6 @@ namespace ConsoleSQLServerCS
 
             Console.WriteLine("3 -Executing a SQL Update Command without a parameter");
 
-            //Console.WriteLine("Enter text for Ron1Text> ");
-            //userInputRon1Text = "";
-            //userInputRon1Text = Console.ReadLine();
-
-            //Console.WriteLine("Enter Y or N for Ron1YesNo> ");
-            //userInputRon1YesNo = "";
-            //userInputRon1YesNo = Console.ReadLine();
-            //inputRon1YesNo = false;
-            //if (userInputRon1YesNo.ToUpper() == "Y")
-            //{
-            //    inputRon1YesNo = true;
-            //}
-
-
-            //Console.WriteLine("Enter This or That for Ron1ThisOrThat> ");
-            //userInputRon1ThisOrThat = "";
-            //userInputRon1ThisOrThat = Console.ReadLine();
-
-            //Console.WriteLine("Enter text for a Ron1Comments> ");
-            //userInputRon1Comments = "";
-            //userInputRon1Comments = Console.ReadLine();
-
             entertextonscreen();
 
             sqlSelectString = "Update Ron1Table set Ron1YesNo = '" + inputRon1YesNo + "', Ron1ThisOrThat = '" + userInputRon1ThisOrThat + "', Ron1Comments = '" + userInputRon1Comments + "'" +
@@ -162,11 +119,6 @@ namespace ConsoleSQLServerCS
             cmd = new SqlCommand(sqlSelectString, conn);
             cmd.ExecuteNonQuery();
 
-
-            // Executing SQL Statements that Return Rows Using a Command Object 
-            //sqlSelectString = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
-            //             "inner join Ron2Table on Ron2FID = Ron2UID " +
-            //             " where Ron1Text = '" + userInputRon1Text + "'";
             sqlSelectString = "Select Ron1UID, Ron2Text, Ron1Text, Ron1ThisOrThat, Ron1YesNo, Ron1Comments from Ron1Table " +
                               "inner join Ron2Table on Ron2FID = Ron2UID " +
                               "where Ron1Text = '" + userInputRon1Text + "'";
@@ -198,11 +150,6 @@ namespace ConsoleSQLServerCS
             cmd = new SqlCommand(sqlSelectString, conn);
             cmd.ExecuteNonQuery();
 
-
-            // Executing SQL Statements that Return Rows Using a Command Object 
-            //sqlSelectString = "Select Ron1Text, Ron1ThisOrThat from Ron1Table " +
-            //             "inner join Ron2Table on Ron2FID = Ron2UID " +
-            //             " where Ron1Text = '" + userInputRon1Text + "'";
             sqlSelectString = "Select Ron1UID, Ron2Text, Ron1Text, Ron1ThisOrThat, Ron1YesNo, Ron1Comments from Ron1Table " +
                               "inner join Ron2Table on Ron2FID = Ron2UID " +
                               "where Ron1Text = '" + userInputRon1Text + "'";
@@ -332,8 +279,6 @@ namespace ConsoleSQLServerCS
                              "inner join Ron2Table on Ron2FID = Ron2UID " +
                              "where Ron2Text = @Ron2Text";
 
-
-
             Console.WriteLine("6 - Executing a SQL Select Command using a SQL parameter - Method 1 ");
 
             Console.WriteLine("Enter a Ron2Text> ");
@@ -356,8 +301,6 @@ namespace ConsoleSQLServerCS
 
             reader.Close();
             Console.WriteLine("-------------------------------------------------------------------------");
-
-
 
             conn.Close();
 
@@ -440,36 +383,7 @@ namespace ConsoleSQLServerCS
             //-------------------------------------------------------------------------------------------------------------------------------------//
             // Executing Stored Procedures that Return Rows Using a Command Object                                                                 //
             //-------------------------------------------------------------------------------------------------------------------------------------//
-
-            // The following block of code has been commented out as stored procedure usp_Ron1TableRead is redundant
-            // and has been removed from the database.
-
-            //Console.WriteLine("8 - Executing Stored Procedures that Return Rows Using a Command Object ");
-
-            //using (conn = new SqlConnection(stringConnectionString))
-            //{
-            //    cmd = new SqlCommand("usp_Ron1TableRead", conn);
-            //    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-            //    conn.Open();
-
-            //    reader = cmd.ExecuteReader();
-            //    while (reader.Read())
-            //    {
-            //        //Console.WriteLine("{0}, {1}", reader2.GetInt32(0), reader2.GetInt32(1)); //The 0 stands for "the 0'th column", so the first column of the result.
-            //        Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetBoolean(3), reader.GetString(4), reader.GetString(5));
-            //    }
-
-            //    reader.Close();
-
-            //}
-            //Console.WriteLine("-------------------------------------------------------------------------");
-
-
-            //conn.Close();
-
-
-
+             
             // Using SQL Parameter
 
             Console.WriteLine("9 - Executing Stored Procedures that Return Rows Using a Command Object - using a SQL parameter - Method 1 - Do not pass a parameter so that all rows are returned ");
@@ -552,37 +466,89 @@ namespace ConsoleSQLServerCS
 
             Console.WriteLine("11 - Executing Stored Procedures that Inserts Rows Using a Command Object - using SQL parameters ");
 
-            //Console.WriteLine("Enter text for Ron1Text> ");
-            //userInputRon1Text = "";
-            //userInputRon1Text = Console.ReadLine();
+            entertextonscreen();
 
-            //Console.WriteLine("Enter Y or N for Ron1YesNo> ");
-            //userInputRon1YesNo = "";
-            //userInputRon1YesNo = Console.ReadLine();
-            //inputRon1YesNo = false;
-            //if (userInputRon1YesNo.ToUpper() == "Y")
-            //{
-            //    inputRon1YesNo = true;
-            //}
+            Ron1TableRecUID = 0;
 
-            //Console.WriteLine("Enter This or That for Ron1ThisOrThat> ");
-            //userInputRon1ThisOrThat = "";
-            //userInputRon1ThisOrThat = Console.ReadLine();
+            try
+            {
 
-            //Console.WriteLine("Enter text for a Ron1Comments> ");
-            //userInputRon1Comments = "";
-            //userInputRon1Comments = Console.ReadLine();
+                using (conn = new SqlConnection(stringConnectionString))
+                {
+                    conn.Open();
+                    using (var cmd1 = new SqlCommand("usp_Ron1TableInsert", conn))
+                    {
+                        cmd1.CommandType = CommandType.StoredProcedure;
+
+
+                        cmd1.Parameters.Add("@FID", SqlDbType.Int);
+                        cmd1.Parameters["@FID"].Value = 1;
+                        cmd1.Parameters.Add("@Text", SqlDbType.VarChar);
+                        cmd1.Parameters["@Text"].Value = userInputRon1Text;
+                        cmd1.Parameters.Add("@YesNo", SqlDbType.Bit);
+                        cmd1.Parameters["@YesNo"].Value = inputRon1YesNo;
+                        cmd1.Parameters.Add("@ThisOrThat", SqlDbType.VarChar);
+                        cmd1.Parameters["@ThisOrThat"].Value = userInputRon1ThisOrThat;
+                        cmd1.Parameters.Add("@Comments", SqlDbType.VarChar);
+                        cmd1.Parameters["@Comments"].Value = userInputRon1Comments;
+
+                        //This parameter is the returned parameter and will contains the identity of the record added to the table
+                        var returnParameter = cmd1.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                        returnParameter.Direction = ParameterDirection.ReturnValue;
+
+                        cmd1.ExecuteNonQuery();
+
+                        Ron1TableRecUID = Convert.ToInt32(returnParameter.Value);
+
+                        // Executing SQL Statements that Return Rows Using a Command Object 
+                        sqlSelectString = "Select * from Ron1Table " +
+                                     " where Ron1Text = '" + userInputRon1Text + "'"; ;
+                        cmd = new SqlCommand(sqlSelectString, conn);
+
+                        reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            //Console.WriteLine("{0}, {1}", reader.GetString(0), reader.GetString(1)); //The 0 stands for "the 0'th column", so the first column of the result.
+                            Console.WriteLine("{0}, {1}, {2}, {3}, {4}, {5}", reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetString(3), reader.GetBoolean(4), reader.GetString(5));
+                            //Ron1TableRecUID = reader.GetInt32(0);
+                        }
+
+                        reader.Close();
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine (ex.Message);
+            }
+
+            Console.WriteLine("-------------------------------------------------------------------------");
+
+
+            conn.Close();
+
+
+            //-------------------------------------------------------------------------------------------------------------------------------------//
+            // Executing Stored Procedures that Updates Rows Using a Command Object                                                                //
+            //-------------------------------------------------------------------------------------------------------------------------------------//
+
+            Console.WriteLine("12 - Executing Stored Procedure that Updates A Row Using a Command Object - using SQL parameters ");
 
             entertextonscreen();
 
             using (conn = new SqlConnection(stringConnectionString))
             {
                 conn.Open();
-                using (var cmd1 = new SqlCommand("usp_Ron1TableInsert", conn))
+                using (var cmd1 = new SqlCommand("usp_Ron1TableUpdate", conn))
                 {
                     cmd1.CommandType = CommandType.StoredProcedure;
 
-
+                    cmd1.Parameters.Add("@UID", SqlDbType.Int);
+                    cmd1.Parameters["@UID"].Value = Ron1TableRecUID;
                     cmd1.Parameters.Add("@FID", SqlDbType.Int);
                     cmd1.Parameters["@FID"].Value = 1;
                     cmd1.Parameters.Add("@Text", SqlDbType.VarChar);
@@ -598,7 +564,7 @@ namespace ConsoleSQLServerCS
 
                     // Executing SQL Statements that Return Rows Using a Command Object 
                     sqlSelectString = "Select * from Ron1Table " +
-                                 " where Ron1Text = '" + userInputRon1Text + "'"; ;
+                                 " where Ron1UID = " + Ron1TableRecUID;
                     cmd = new SqlCommand(sqlSelectString, conn);
                     reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -618,13 +584,6 @@ namespace ConsoleSQLServerCS
 
 
             conn.Close();
-
-
-            //-------------------------------------------------------------------------------------------------------------------------------------//
-            // Executing Stored Procedures that Updates Rows Using a Command Object                                                                //
-            //-------------------------------------------------------------------------------------------------------------------------------------//
-
-
 
 
 
